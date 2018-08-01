@@ -20,7 +20,6 @@ import java.nio.charset.Charset;
  * 一旦定义了@ComponentScan，那么该启动类将只扫描指定的几个包下的。默认是启动类当前包下
  */
 @EnableScheduling //开启定时任务
-@ComponentScan(basePackages = {"cn.lastlysly","cn.lastlysly.myutils.taskdemo"})
 @SpringBootApplication
 public class SpringbootDemoApplication extends SpringBootServletInitializer{
 

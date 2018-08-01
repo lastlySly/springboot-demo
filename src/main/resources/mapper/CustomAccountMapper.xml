@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastlysly.mapper.CustomAccountMapper">
+
+    <update id="inAccount" parameterType="java.util.Map">
+        update account_sheet set account_money = account_money + #{money} where account_id = #{inId}
+
+    </update>
+
+    <update id="outAccount" parameterType="java.util.Map">
+        update account_sheet set account_money = account_money - #{money} where account_id = #{inId}
+
+    </update>
+</mapper>

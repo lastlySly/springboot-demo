@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+</head>
+<body>
+<h1>shro分离式测试，如果能成功进入该页面且获取数据成功，则便是成功</h1>
+
+<table id="test" border="1">
+
+    <tr><th>账户</th><th>余额</th></tr>
+    <tr><td>失败</td><td>失败</td></tr>
+</table>
+<script>
+    $(function () {
+
+        // $.post("http://localhost:8080/fenlimain",{"token":$.cookie("token")},function (data) {
+        //     if (data.code == "1") {
+        //         $("#test").empty();
+        //         $("#test").append("<tr><th>账户</th><th>余额</th></tr>");
+        //         for(var i=0;i<data.data.length;i++){
+        //             var str = '<tr><td>'+data.data[i].accountId+'</td>'+
+        //                 '<td>'+ data.data[i].accountMoney +'</td></tr>';
+        //             $("#test").append(str);
+        //         }
+        //     } else{
+        //         alert("====错误" + data.tip);
+        //     }
+        // });
+
+        $.ajax({
+            url:"http://localhost:8080/fenlimain",
+            type:"POST",
+            data:{"token":$.cookie("token")},
+            // headers: {"token":$.cookie("token")},
+            success:function (data) {
+                if (data.code == "1") {
+                    $("#test").empty();
+                    $("#test").append("<tr><th>账户</th><th>余额</th></tr>");
+                    for(var i=0;i<data.data.length;i++){
+                        var str = '<tr><td>'+data.data[i].accountId+'</td>'+
+                            '<td>'+ data.data[i].accountMoney +'</td></tr>';
+                        $("#test").append(str);
+                    }
+                } else{
+                    alert("====错误" + data.tip);
+                }
+            },
+            error: function(err) {
+                alert(err);
+            },
+            complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数　
+
+            }
+        });
+
+
+
+    })
+</script>
+</body>
+</html>

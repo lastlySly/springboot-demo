@@ -1,10 +1,19 @@
 server:
-  port: 8081
-  # dddd
-  servlet:
-    context-path: /demo
+  port: 8080
+#  servlet:
+#    context-path: /demo
 
-
+jdbc:
+  driver: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/ssmdemo?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  username: root
+  password: 123456
+# mybatis配置文件所在位置
+mybatis_config_file: mybatis/SqlMapConfig.xml
+# mapper.xml所在位置
+mapper_path: mapper/**.xml
+# pojo所在位置
+pojo_package: cn.lastlysly.pojo
 
 
 
@@ -44,4 +53,13 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
+
+
+
+# 自定义目录路径
+cn:
+  lastlysly:
+    custom:
+      windows-path: f:/myuploadpicfolder
+      linux-path: /myuploadpicfolder
 
