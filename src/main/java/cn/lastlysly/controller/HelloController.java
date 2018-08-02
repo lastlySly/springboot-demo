@@ -24,6 +24,7 @@ public class HelloController {
     @RequestMapping("/hello")
     @ResponseBody
     public String sayHello(){
+        System.out.println(111);
         String str = "Hello SpringBoot，测试拦截器，" +
                 "用PostMan模拟AJax请求访问显示不同效果,注意，" +
                 "（该例中我没有定义消息转换器，如果定义了消息转换器会导致@ResposeBody不可用，限于" +
